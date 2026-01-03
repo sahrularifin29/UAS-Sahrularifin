@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -241,6 +240,7 @@
       transition:.25s ease;
     }
     .btn-asta:hover{ filter:brightness(1.08); color:#fff; }
+
     .btn-outline-gold{
       border:1px solid rgba(214,178,75,.65);
       color:var(--accent-gold);
@@ -252,15 +252,6 @@
     }
     .btn-outline-gold:hover{ filter:brightness(1.08); color:var(--accent-gold); }
 
-    .hint{
-      color:rgba(255,255,255,.72);
-      font-size:.92rem;
-      margin-top:10px;
-      padding:12px 14px;
-      border-radius:18px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(214,178,75,.12);
-    }
     .highlight{
       color:#ff3b45;
       font-weight:900;
@@ -348,7 +339,7 @@
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar navbar-expand-lg navbar-asta fixed-top">
     <div class="container-fluid px-4">
       <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#astaNav"
@@ -369,7 +360,7 @@
     </div>
   </nav>
 
-<!-- ===== MAIN CONTENT ===== -->
+  <!-- ===== MAIN CONTENT ===== -->
   <div class="main-content">
     <div class="container">
 
@@ -379,18 +370,18 @@
             <div class="mb-2">
               <span class="tag">📞 Hubungi</span>
               <span class="tag">🛡️ Ksatria Sihir</span>
-              <span class="tag">🐂 Black Bulls</span>
             </div>
             <h1 class="title display-6">Hubungi Ksatria Sihir</h1>
             <p class="subtitle mb-0">
-              <b>Kesatria sihir siap melayani 24 jam.</b> Isi data kamu, lalu pilih cara yang ingin dihubungi.
-              Kami juga sediakan input <span class="highlight">lokasi</span> agar lebih mudah.
+              <b>Kesatria sihir siap melayani 24 jam.</b> Isi nama, nomor yang bisa dihubungi, dan lokasi kamu.
+              Tim akan merespons secepat mungkin.
             </p>
           </div>
         </div>
       </section>
 
       <section class="row g-4">
+        <!-- INFO -->
         <div class="col-lg-5">
           <div class="panel">
             <h2 class="panel-title h5 mb-3">Info Kontak</h2>
@@ -407,9 +398,7 @@
               <div class="info-icon">📞</div>
               <div>
                 <p class="info-label">Nomor yang Bisa Dihubungi</p>
-                <p class="info-value">
-                  <a href="tel:+6281234567890">+62 812-3456-7890</a>
-                </p>
+                <p class="info-value"><a href="tel:+6281234567890">+62 812-3456-7890</a></p>
               </div>
             </div>
 
@@ -417,9 +406,7 @@
               <div class="info-icon">✉️</div>
               <div>
                 <p class="info-label">Email</p>
-                <p class="info-value">
-                  <a href="mailto:yanargiffari@gmail.com">blackbulls@gmail.com</a>
-                </p>
+                <p class="info-value"><a href="mailto:blackbulls@gmail.com">blackbulls@gmail.com</a></p>
               </div>
             </div>
 
@@ -430,17 +417,16 @@
                 <p class="info-value">Kesatria sihir siap melayani 24 jam</p>
               </div>
             </div>
-
           </div>
         </div>
 
+        <!-- FORM -->
         <div class="col-lg-7">
           <div class="panel">
             <h2 class="panel-title h5 mb-3">Form Laporan / Pesan</h2>
 
             <form id="contactForm" novalidate>
               <div class="row g-3">
-
                 <div class="col-md-6">
                   <label class="form-label" for="nama">Nama</label>
                   <input class="form-control" id="nama" type="text" placeholder="Masukkan nama kamu" required>
@@ -453,15 +439,8 @@
 
                 <div class="col-12">
                   <label class="form-label" for="lokasi">Lokasi</label>
-                  <input class="form-control" id="lokasi" type="text" placeholder="Contoh: Pamulang, Tangerang Selatan" required>
-                  <div class="hint mt-2 mb-0">
-                    Mau auto isi lokasi? Klik tombol <b>Ambil Lokasi</b> (butuh izin browser).
-                  </div>
-                </div>
-
-                <div class="col-12 d-flex gap-2 flex-wrap">
-                  <button class="btn btn-outline-gold" type="button" id="btnGeo">Ambil Lokasi</button>
-                  <button class="btn btn-outline-gold" type="button" id="btnMap">Buka di Maps</button>
+                  <input class="form-control" id="lokasi" type="text"
+                         placeholder="Contoh: Pamulang, Tangerang Selatan" required>
                 </div>
 
                 <div class="col-12">
@@ -486,12 +465,11 @@
                 </div>
               </div>
             </form>
-
           </div>
         </div>
       </section>
 
-<!-- ===== FOOTER ===== -->
+      <!-- ===== FOOTER ===== -->
       <footer class="footer-custom mt-5">
         <div class="container">
           <p class="mb-2" style="font-size:0.9rem; opacity:0.85;">© 2026 Copyright</p>
@@ -501,9 +479,11 @@
           <p class="small mb-0" style="color:#ff3b45; font-weight:700;">“MADA MADA”</p>
         </div>
       </footer>
+
     </div>
   </div>
 
+  <!-- ===== TOAST ===== -->
   <div class="toast-wrap" id="toastWrap" style="display:none;">
     <div class="toast-custom">
       <div class="toast-head">
@@ -514,7 +494,7 @@
     </div>
   </div>
 
-<!-- ===== SCRIPTS ===== -->
+  <!-- ===== SCRIPTS ===== -->
   <script>
     const toastWrap = document.getElementById("toastWrap");
     const toastTitle = document.getElementById("toastTitle");
@@ -531,8 +511,6 @@
 
     const form = document.getElementById("contactForm");
     const btnReset = document.getElementById("btnReset");
-    const btnGeo = document.getElementById("btnGeo");
-    const btnMap = document.getElementById("btnMap");
 
     const namaEl = document.getElementById("nama");
     const hpEl = document.getElementById("hp");
@@ -543,38 +521,6 @@
     btnReset.addEventListener("click", () => {
       form.reset();
       showToast("Di-reset", "Form sudah dikosongkan. Silakan isi lagi.");
-    });
-
-    btnGeo.addEventListener("click", () => {
-      if (!navigator.geolocation){
-        showToast("Tidak Didukung", "Browser kamu tidak mendukung fitur lokasi.");
-        return;
-      }
-
-      showToast("Memproses...", "Sedang mengambil lokasi. Izinkan akses lokasi jika diminta.");
-
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = pos.coords.latitude.toFixed(6);
-          const lng = pos.coords.longitude.toFixed(6);
-          lokasiEl.value = `Koordinat: ${lat}, ${lng}`;
-          showToast("Lokasi Didapat", `Koordinat berhasil diisi: ${lat}, ${lng}`);
-        },
-        () => {
-          showToast("Gagal", "Lokasi tidak bisa diambil. Pastikan izin lokasi diaktifkan.");
-        },
-        { enableHighAccuracy: true, timeout: 8000 }
-      );
-    });
-
-    btnMap.addEventListener("click", () => {
-      const lokasi = (lokasiEl.value || "").trim();
-      if (!lokasi){
-        showToast("Lokasi Kosong", "Isi dulu lokasi atau ambil lokasi otomatis.");
-        return;
-      }
-      const q = encodeURIComponent(lokasi);
-      window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, "_blank");
     });
 
     form.addEventListener("submit", (e) => {
@@ -604,5 +550,4 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
