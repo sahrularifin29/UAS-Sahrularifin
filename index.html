@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOME - ASTA | BLACK CLOVER</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-black: #0b0b0f;
+      --deep-black: #050508;
+      --asta-red: #b10f1a;
+      --dark-red: #6d0b12;
+      --accent-gold: #d6b24b;
+      --smoke: rgba(255, 255, 255, 0.08);
+      --sidebar-width: 0px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('./img/asta1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #e9e9ee;
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    .navbar-asta {
+      background: linear-gradient(90deg, #050508, #0b0b0f 40%, #6d0b12);
+      border-bottom: 2px solid rgba(214, 178, 75, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 800;
+      color: #d6b24b !important;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(214, 178, 75, 0.4);
+    }
+
+    .nav-asta {
+      position: relative;
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.35s ease;
+    }
+
+    .nav-asta::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #b10f1a, #d6b24b);
+      transition: width 0.35s ease;
+    }
+
+    .nav-asta:hover {
+      color: #fff !important;
+      background: rgba(177, 15, 26, 0.18);
+    }
+
+    .nav-asta:hover::after,
+    .nav-asta.active::after {
+      width: 100%;
+    }
+
+    .nav-asta.active {
+      color: #d6b24b !important;
+      text-shadow: 0 0 10px rgba(214, 178, 75, 0.4);
+    }
+
+    .navbar-toggler {
+      border: 1px solid rgba(214, 178, 75, 0.6);
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      margin-left: var(--sidebar-width);
+      padding: 30px;
+      width: calc(100% - var(--sidebar-width));
+      min-height: 100vh;
+    }
+
+    .banner-wrapper {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .main-banner {
+      width: 100%;
+      max-width: 980px;
+      height: auto;
+      border-radius: 18px;
+      border: 2px solid rgba(214, 178, 75, 0.45);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.55);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .highlight {
+      color: #ff3b45;
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(177, 15, 26, 0.25);
+    }
+
+    .hero-wrap {
+      background: rgba(8, 8, 12, 0.70);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 26px;
+      padding: 34px 34px 70px;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background:
+        radial-gradient(600px 420px at 15% 25%, rgba(177, 15, 26, 0.35), transparent 60%),
+        radial-gradient(520px 420px at 80% 20%, rgba(214, 178, 75, 0.18), transparent 55%);
+      filter: blur(10px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      line-height: 1.1;
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.05rem;
+    }
+
+    .hero-cta .btn {
+      border-radius: 14px;
+      padding: 10px 16px;
+      font-weight: 800;
+    }
+
+    .btn-asta {
+      background: rgba(177, 15, 26, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .btn-asta:hover {
+      filter: brightness(1.08);
+      color: #fff;
+    }
+
+    .btn-outline-gold {
+      border: 1px solid rgba(214, 178, 75, 0.65);
+      color: var(--accent-gold);
+      background: rgba(214, 178, 75, 0.08);
+    }
+
+    .btn-outline-gold:hover {
+      filter: brightness(1.08);
+      color: var(--accent-gold);
+    }
+
+    .hero-img2 {
+      width: 100%;
+      border-radius: 22px;
+      border: 2px solid rgba(214, 178, 75, 0.35);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .time-display-card {
+      background: rgba(10, 10, 14, 0.65);
+      border-radius: 1.25rem;
+      padding: 18px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(214, 178, 75, 0.35);
+    }
+
+    .time-float {
+      margin-top: -38px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-card {
+      background: rgba(8, 8, 12, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .feature-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(214, 178, 75, 0.22);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      margin-bottom: 14px;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .feature-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.01);
+    }
+
+    .feature-card h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-weight: 900;
+      border-bottom: 3px solid rgba(177, 15, 26, 0.85);
+      display: inline-block;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: rgba(255, 255, 255, 0.86);
+      margin-bottom: 0;
+    }
+
+    .quote-strip {
+      background: linear-gradient(90deg, rgba(177, 15, 26, 0.18), rgba(214, 178, 75, 0.10));
+      border: 1px solid rgba(214, 178, 75, 0.22);
+      border-radius: 20px;
+      padding: 18px 20px;
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer-custom {
+      margin-top: 46px;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      padding: 28px 20px;
+      background: linear-gradient(180deg, rgba(177, 15, 26, 0.22), rgba(5, 5, 8, 0.92));
+      border-radius: 20px 20px 0 0;
+      border-top: 3px solid rgba(214, 178, 75, 0.55);
+      box-shadow: 0 -10px 30px rgba(177, 15, 26, 0.18);
+    }
+
+    .footer-name {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-separator {
+      height: 2px;
+      width: 62%;
+      margin: 14px auto;
+      background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+      opacity: 0.55;
+    }
+  </style>
+</head>
+
+<body>
+<!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-asta fixed-top">
+    <div class="container-fluid px-4">
+      <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#astaNav"
+        aria-controls="astaNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="#">⚔️ BLACK BULLS</a>
+
+      <div class="collapse navbar-collapse" id="astaNav">
+        <ul class="navbar-nav me-auto gap-lg-2 ms-lg-4">
+          <li class="nav-item"><a class="nav-link nav-asta active" href="index.html">HOME</a></li>
+          <li class="nav-item"><a class="nav-link nav-asta" href="profile.html">PROFILE</a></li>
+          <li class="nav-item"><a class="nav-link nav-asta" href="album.html">ALBUM</a></li>
+          <li class="nav-item"><a class="nav-link nav-asta" href="contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+    <div class="container">
+
+      <div class="banner-wrapper">
+        <img src="./img/benner3.jpg" class="main-banner" alt="Banner Asta">
+      </div>
+
+      <section class="hero-wrap">
+        <div class="row align-items-center hero-content">
+          <div class="col-lg-7">
+            <h1 class="hero-title display-6 mb-3">ASTA — Anti-Magic Knight of Clover Kingdom</h1>
+            <p class="hero-sub mb-3">
+              Di dunia yang dipenuhi mana, Asta berdiri sebagai pengecualian.
+              Tanpa sihir, ia melawan takdir dengan <span class="highlight">kekuatan, disiplin, dan Anti-Magic</span>.
+            </p>
+
+            <div class="hero-cta d-flex gap-2 flex-wrap mt-3">
+              <a href="profile.html" class="btn btn-asta">Lihat Profil</a>
+              <a href="album.html" class="btn btn-outline-gold">Buka Album</a>
+            </div>
+
+            <div class="quote-strip">
+              <b class="highlight">“Never Give Up!”</b> — tekad Asta yang jadi identitas Black Bulls.
+            </div>
+          </div>
+
+          <div class="col-lg-5 mt-4 mt-lg-0">
+            <img src="./img/asta-ant.jpg" class="hero-img2" alt="Asta Hero">
+          </div>
+        </div>
+      </section>
+
+      <div class="time-float">
+        <div id="time-display" class="time-display-card text-center"></div>
+      </div>
+
+      <section class="mt-4">
+        <div class="row g-4">
+
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-media">
+                <img src="./img/Asta-Calisthenics-Workout-2.jpg" alt="Asal Mula Asta">
+              </div>
+              <h4>Asal Mula</h4>
+              <p>
+                Asta lahir tanpa mana. Tapi ia mengganti kekurangan itu dengan latihan fisik brutal
+                dan mental yang tidak pernah mundur.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-media">
+                <img src="./img/asta-black-clover-4k-five-leaf-clover-grimoire-3k2oxvqsiyj8dmlq.jpg" alt="Anti Magic Asta">
+              </div>
+              <h4>Anti-Magic</h4>
+              <p>
+                Grimoire berdaun lima memberinya kekuatan untuk meniadakan sihir.
+                Senjata utamanya: pedang Anti-Magic dan adaptasi cepat saat bertarung.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-media">
+                <img src="./img/images.jpg" alt="Tujuan Asta">
+              </div>
+              <h4>Tujuan</h4>
+              <p>
+                Menjadi Wizard King bukan soal status, tapi bukti bahwa orang “tanpa mana”
+                juga bisa berada di puncak.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+<!-- ===== FOOTER ===== -->
+      <footer class="footer-custom mt-5">
+        <div class="container">
+          <p class="mb-2" style="font-size:0.9rem; opacity:0.85;">© 2026 Copyright</p>
+          <div class="footer-name">SAHRUL ARIFIN</div>
+          <div class="footer-separator"></div>
+          <p class="mb-0 small">Nim: 251011700081 | Kelas: 01SIFP001</p>
+          <p class="small mb-0" style="color:#ff3b45; font-weight:700;">“MADA MADA”</p>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+<!-- ===== SCRIPTS ===== -->
+  <script>
+    function refreshClock() {
+      const now = new Date();
+      const h = now.getHours();
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+
+      const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+      let greet =
+        h < 11 ? "Latihan dulu, Asta!" :
+          h < 15 ? "Gas misi, Black Bulls!" :
+            h < 19 ? "Tetap fokus, ksatria!" :
+              "Istirahat, besok lanjut lagi!";
+
+      let icon = h < 19 ? "⚔️" : "📕";
+
+      document.getElementById("time-display").innerHTML = `
+        <div style="font-family:'Cinzel'; font-size:1.5rem; color:var(--accent-gold); font-weight:800;">
+          ${icon} ${greet} ${icon}
+        </div>
+        <div class="d-flex justify-content-center gap-2 gap-md-3 mt-3 flex-wrap">
+          <span class="badge p-2 fs-6" style="background:rgba(177,15,26,0.85); border:1px solid rgba(255,255,255,0.12);">
+            ${h}:${m}:${s}
+          </span>
+          <span class="badge p-2 fs-6 text-dark" style="background:rgba(214,178,75,0.92);">
+            ${days[now.getDay()]}
+          </span>
+          <span class="badge p-2 fs-6" style="background:rgba(255,255,255,0.08); border:1px solid rgba(214,178,75,0.35);">
+            ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}
+          </span>
+        </div>
+      `;
+    }
+    setInterval(refreshClock, 1000);
+    refreshClock();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
