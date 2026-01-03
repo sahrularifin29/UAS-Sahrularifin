@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROFILE - ASTA | BLACK CLOVER</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary-black:#0b0b0f;
+      --deep-black:#050508;
+      --asta-red:#b10f1a;
+      --dark-red:#6d0b12;
+      --accent-gold:#d6b24b;
+      --smoke:rgba(255,255,255,0.08);
+      --sidebar-width:0px;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:
+        linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),
+        url('./img/asta1.jpg') no-repeat center center fixed;
+      background-size:cover;
+      color:#e9e9ee;
+      overflow-x:hidden;
+      padding-top:80px;
+      animation: transitionIn .75s ease-out;
+    }
+
+    @keyframes transitionIn{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar-asta{
+      background:linear-gradient(90deg,#050508,#0b0b0f 40%,#6d0b12);
+      border-bottom:2px solid rgba(214,178,75,.5);
+      box-shadow:0 10px 30px rgba(0,0,0,.6);
+    }
+    .navbar-brand{
+      font-family:'Cinzel',serif;
+      font-weight:800;
+      color:var(--accent-gold)!important;
+      letter-spacing:1px;
+      text-shadow:0 0 10px rgba(214,178,75,.4);
+    }
+    .nav-asta{
+      position:relative;
+      color:rgba(255,255,255,.85)!important;
+      font-weight:700;
+      padding:8px 16px;
+      border-radius:8px;
+      transition:all .35s ease;
+    }
+    .nav-asta::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:0;
+      width:0%;
+      height:3px;
+      background:linear-gradient(90deg,var(--asta-red),var(--accent-gold));
+      transition:width .35s ease;
+    }
+    .nav-asta:hover{
+      color:#fff!important;
+      background:rgba(177,15,26,.18);
+    }
+    .nav-asta:hover::after,
+    .nav-asta.active::after{ width:100%; }
+    .nav-asta.active{
+      color:var(--accent-gold)!important;
+      text-shadow:0 0 10px rgba(214,178,75,.4);
+    }
+    .navbar-toggler{ border:1px solid rgba(214,178,75,.6); }
+    .navbar-toggler-icon{ filter:invert(1); }
+
+    /* ===== LAYOUT ===== */
+    .main-content{
+      margin-left:var(--sidebar-width);
+      padding:30px;
+      width:calc(100% - var(--sidebar-width));
+      min-height:100vh;
+    }
+
+    .highlight{
+      color:#ff3b45;
+      font-weight:800;
+      text-shadow:0 0 10px rgba(177,15,26,.25);
+    }
+
+    /* ===== HEADER PROFILE ===== */
+    .profile-hero{
+      background:rgba(8,8,12,.72);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      box-shadow:0 22px 55px rgba(0,0,0,.65);
+      overflow:hidden;
+      position:relative;
+    }
+    .profile-hero::before{
+      content:"";
+      position:absolute;
+      inset:-50px;
+      background:
+        radial-gradient(700px 520px at 20% 25%, rgba(177,15,26,.35), transparent 60%),
+        radial-gradient(560px 520px at 85% 20%, rgba(214,178,75,.18), transparent 55%);
+      filter:blur(10px);
+      opacity:.95;
+      pointer-events:none;
+    }
+    .profile-hero > .inner{
+      position:relative;
+      z-index:1;
+      padding:34px;
+    }
+
+    .avatar-wrap{
+      background:rgba(0,0,0,.25);
+      border:1px solid rgba(214,178,75,.22);
+      border-radius:22px;
+      padding:14px;
+      box-shadow:0 18px 40px rgba(0,0,0,.6);
+    }
+    .avatar-media{
+      width:100%;
+      aspect-ratio: 3 / 4;
+      border-radius:18px;
+      overflow:hidden;
+      border:2px solid rgba(214,178,75,.35);
+      background:rgba(0,0,0,.35);
+    }
+    .avatar-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      transform:scale(1.01);
+    }
+
+    .title{
+      font-family:'Cinzel',serif;
+      color:var(--accent-gold);
+      font-weight:900;
+      letter-spacing:.7px;
+      line-height:1.15;
+      text-shadow:0 0 18px rgba(214,178,75,.25);
+    }
+
+    .subtext{
+      color:rgba(255,255,255,.88);
+      font-size:1.05rem;
+    }
+
+    .stat-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+    .stat{
+      background:rgba(10,10,14,.55);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px 14px;
+    }
+    .stat .k{
+      color:rgba(255,255,255,.68);
+      font-size:.85rem;
+      margin-bottom:4px;
+    }
+    .stat .v{
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+
+    /* ===== CARD SECTION ===== */
+    .section-card{
+      background:rgba(8,8,12,.72);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:26px;
+      padding:22px;
+      box-shadow:0 18px 45px rgba(0,0,0,.55);
+    }
+
+    .section-title{
+      font-family:'Cinzel',serif;
+      color:var(--accent-gold);
+      font-weight:900;
+      border-bottom:3px solid rgba(177,15,26,.85);
+      display:inline-block;
+      padding-bottom:6px;
+      margin-bottom:14px;
+      letter-spacing:.4px;
+    }
+
+    .divider{
+      border-color:rgba(214,178,75,.22);
+      opacity:1;
+    }
+
+    .ability{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:14px 14px;
+      height:100%;
+    }
+    .ability h5{
+      font-family:'Cinzel',serif;
+      color:var(--accent-gold);
+      font-weight:900;
+      margin:0 0 8px 0;
+      font-size:1.05rem;
+    }
+    .ability p{
+      color:rgba(255,255,255,.86);
+      margin:0;
+      font-size:.95rem;
+    }
+
+    .bar-label{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:rgba(255,255,255,.88);
+      font-weight:700;
+      margin-top:10px;
+      margin-bottom:6px;
+      font-size:.95rem;
+    }
+    .progress{
+      background:rgba(255,255,255,.08);
+      border-radius:999px;
+      height:12px;
+      overflow:hidden;
+      border:1px solid rgba(214,178,75,.18);
+    }
+    .progress-bar{
+      background:linear-gradient(90deg, rgba(177,15,26,.95), rgba(214,178,75,.9));
+    }
+
+    .mini-media{
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(214,178,75,.22);
+      box-shadow:0 10px 24px rgba(0,0,0,.45);
+      background:rgba(0,0,0,.35);
+    }
+    .mini-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.01);
+    }
+
+    .quote-strip{
+      background:linear-gradient(90deg, rgba(177,15,26,.18), rgba(214,178,75,.10));
+      border:1px solid rgba(214,178,75,.22);
+      border-radius:20px;
+      padding:18px 20px;
+      color:rgba(255,255,255,.92);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer-custom{
+      margin-top:46px;
+      color:rgba(255,255,255,.9);
+      text-align:center;
+      padding:28px 20px;
+      background:linear-gradient(180deg, rgba(177,15,26,.22), rgba(5,5,8,.92));
+      border-radius:20px 20px 0 0;
+      border-top:3px solid rgba(214,178,75,.55);
+      box-shadow:0 -10px 30px rgba(177,15,26,.18);
+    }
+    .footer-name{
+      font-family:'Cinzel',serif;
+      color:var(--accent-gold);
+      font-weight:800;
+      font-size:1.1rem;
+      letter-spacing:1px;
+    }
+    .footer-separator{
+      height:2px;
+      width:62%;
+      margin:14px auto;
+      background:linear-gradient(to right, transparent, var(--accent-gold), transparent);
+      opacity:.55;
+    }
+
+    @media (max-width: 992px){
+      .main-content{ padding:20px; }
+      .profile-hero > .inner{ padding:22px; }
+      .stat-grid{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+    
+<!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-asta fixed-top">
+    <div class="container-fluid px-4">
+      <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#astaNav"
+        aria-controls="astaNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="#">⚔️ BLACK BULLS</a>
+
+      <div class="collapse navbar-collapse" id="astaNav">
+        <ul class="navbar-nav me-auto gap-lg-2 ms-lg-4">
+          <li class="nav-item"><a class="nav-link nav-asta" href="index.html">HOME</a></li>
+          <li class="nav-item"><a class="nav-link nav-asta active" href="profile.html">PROFILE</a></li>
+          <li class="nav-item"><a class="nav-link nav-asta" href="album.html">ALBUM</a></li>
+          <li class="nav-item"><a class="nav-link nav-asta" href="contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+    <div class="container">
+
+      <section class="profile-hero mb-4">
+        <div class="inner">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-4">
+              <div class="avatar-wrap">
+                <div class="avatar-media">
+                  <img src="./img/profile.jpg" alt="Asta Profile">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <h1 class="title display-6 mb-2">ASTA</h1>
+              <p class="subtext mb-3">
+                Ksatria tanpa mana yang mematahkan “aturan dunia sihir”.
+                Dengan <span class="highlight">tekad</span> dan kerja keras,
+                Asta maju untuk membuktikan bahwa siapa pun bisa jadi hebat.
+              </p>
+
+              <div class="stat-grid">
+                <div class="stat">
+                  <div class="k">Alias</div>
+                  <div class="v">Ksatria Pantang Menyerah</div>
+                </div>
+                <div class="stat">
+                  <div class="k">Asal</div>
+                  <div class="v">Hage Village</div>
+                </div>
+                <div class="stat">
+                  <div class="k">Gaya Bertarung</div>
+                  <div class="v">Close Combat</div>
+                </div>
+                <div class="stat">
+                  <div class="k">Target</div>
+                  <div class="v">Wizard King</div>
+                </div>
+              </div>
+
+              <div class="quote-strip mt-3">
+                <span class="highlight">“Never Give Up!”</span> — mantra yang bikin Asta tetap maju, walau semua meremehkan.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- ===== CHARACTER SUMMARY & STATS ===== -->
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="section-card h-100">
+            <h3 class="section-title">Ringkasan Karakter</h3>
+            <p style="color:rgba(255,255,255,.86);">
+              Asta tumbuh sebagai anak yatim di Hage Village. Di dunia yang hampir semua orang memiliki mana,
+              ia harus bertahan dengan latihan fisik ekstrem dan mental baja.
+              Ia dikenal berisik, keras kepala, tapi berhati tulus—tipe yang selalu maju duluan saat orang lain ragu.
+            </p>
+            <hr class="divider my-4">
+
+            <h3 class="section-title">Kepribadian</h3>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="ability">
+                  <h5>🔥 Tekad</h5>
+                  <p>Tidak gampang menyerah, selalu “gas” walau kondisi terburuk.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="ability">
+                  <h5>🤝 Loyal</h5>
+                  <p>Mementingkan teman & siap pasang badan untuk orang yang ia sayangi.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="ability">
+                  <h5>🧠 Adaptif</h5>
+                  <p>Cepat membaca pertarungan dan mengubah cara main sesuai situasi.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="ability">
+                  <h5>⚡ Berani</h5>
+                  <p>Langsung maju duluan ketika orang lain ragu mengambil risiko.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="section-card h-100">
+            <h3 class="section-title">Power Stats</h3>
+
+            <div class="bar-label"><span>Physical Strength</span><span>95%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:95%"></div></div>
+
+            <div class="bar-label"><span>Speed & Reflex</span><span>84%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:84%"></div></div>
+
+            <div class="bar-label"><span>Battle IQ</span><span>78%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:78%"></div></div>
+
+            <div class="bar-label"><span>Willpower</span><span>100%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+
+            <hr class="divider my-4">
+
+            <h3 class="section-title">Ciri Khas</h3>
+            <ul style="color:rgba(255,255,255,.86); margin:0; padding-left:18px;">
+              <li><b>Latihan fisik ekstrem</b> — sumber kekuatan utamanya.</li>
+              <li><b>Semangat keras kepala</b> — tidak takut gagal.</li>
+              <li><b>Berani maju</b> — selalu melindungi orang lain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MINI GALLERY ===== -->
+      <section class="mt-4">
+        <div class="section-card">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <h3 class="section-title mb-0">Highlight Momen</h3>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-4">
+              <div class="mini-media">
+                <img src="./img/s1.webp" alt="Asta Moment 1">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mini-media">
+                <img src="./img/s2.jpg" alt="Asta Moment 2">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mini-media">
+                <img src="./img/s3.jpg" alt="Asta Moment 3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer class="footer-custom mt-5">
+        <div class="container">
+          <p class="mb-2" style="font-size:0.9rem; opacity:0.85;">© 2026 Copyright</p>
+          <div class="footer-name">SAHRUL ARIFIN</div>
+          <div class="footer-separator"></div>
+          <p class="mb-0 small">Nim: 251011700081 | Kelas: 01SIFP001</p>
+          <p class="small mb-0" style="color:#ff3b45; font-weight:700;">“MADA MADA”</p>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+<!-- ===== SCRIPTS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
